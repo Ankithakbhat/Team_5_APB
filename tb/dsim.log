@@ -1,0 +1,72 @@
+=N:[UVMSource] Using sources from 'C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2'
+=N:[UsageMeter (2024-10-24 12:10:46 India Standard Time)] usage server initial connection
+=N:[License] 
+Licensed for Metrics Design Automation.
+=N:[License] New lease granted.
+Analyzing...
+Elaborating...
+  Top-level modules:
+    $unit
+=W:[IneffectiveDynamicCast]:
+    The following dynamic $cast cases will always be false    
+
+    C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_callback.svh:521:9              class uvm_pkg::uvm_callbacks#(class uvm_pkg::uvm_phase,class uvm_pkg::uvm_phase_cb)    class uvm_pkg::uvm_callbacks#(class uvm_pkg::uvm_phase,class uvm_pkg::uvm_callback)    
+    Included from C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_base.svh:76:12                                                                                                                                                                                  
+    Included from C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\uvm_pkg.sv:31:12                                                                                                                                                                                         
+
+    C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_callback.svh:671:12             class uvm_pkg::uvm_phase                                                               class uvm_pkg::uvm_report_object                                                       
+    Included from C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_base.svh:76:12                                                                                                                                                                                  
+
+    C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_callback.svh:731:10             class uvm_pkg::uvm_component                                                           class uvm_pkg::uvm_phase                                                               
+    Included from C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_base.svh:76:12                                                                                                                                                                                  
+
+    C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_callback.svh:808:10             class uvm_pkg::uvm_component                                                           class uvm_pkg::uvm_phase                                                               
+    Included from C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_base.svh:76:12                                                                                                                                                                                  
+
+  Found 3 unique specialization(s) of 3 design element(s).
+Optimizing...
+Building models...
+PLI/VPI access: (none) 
+Simulation time precision is 1ns.
+  [1/5] module $root: 1715 functions, 3774 basic blocks
+  [2/5] module $pkgs: 1 functions, 2 basic blocks
+  [3/5] CU scope $unit: 15 functions, 816 basic blocks
+  [4/5] package std: 31 functions, 80 basic blocks
+  [5/5] package uvm_pkg: 5 submodules, 3608 functions, 39542 basic blocks
+Linking image.so...
+Using default typical min/typ/max.
+=S:Begin run-time elaboration and static initialization...
+UVM_INFO C:\Users\tanma\AppData\Local\metrics-ca\dsim\20240422.9.0\uvm\1.2\src\base\uvm_root.svh(392) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+  See http://www.eda.org/svdb/view.php?id=3313 for more details.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+  See http://www.eda.org/svdb/view.php?id=3770 for more details.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+=N:Starting event scheduler...
+=T:Event queue exhausted - terminating run.
+Simulation statistics:
+    End time: 0 ticks
+    Events processed: 0
+      Fast events: 0
+    Run time: 0.28 sec
+    Garbage collections: 1
+    Terminal heap size: 524288
+    Total bytes allocated: 204800
+  Metrics DSim version: 20240422.9.0 (b:R #c:0 h:d63c52d5c2 os:msys2_)
+  Random seed: (defaulted to 1)

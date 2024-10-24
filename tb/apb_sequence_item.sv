@@ -1,11 +1,15 @@
+import uvm_pkg::*;
+`include "uvm_macros.svh"
+`include "defines.svh"
+
 class apb_seq_item extends uvm_sequence_item;
-  rand bit [AW-1:0] i_paddr;  // Address 
+  rand bit [`AW-1:0] i_paddr;  // Address 
   rand bit          i_pwrite;  // Write enable
   bit               i_psel;  // Select
   bit               i_penable;  // Enable
-  rand bit [DW-1:0] i_pwdata;  // Write data
-  rand bit [SW-1:0] i_pstrb;  // Write strobe
-  bit [DW-1:0]      o_prdata;  // Read data
+  rand bit [`DW-1:0] i_pwdata;  // Write data
+  rand bit [`SW-1:0] i_pstrb;  // Write strobe
+  bit [`DW-1:0]     o_prdata;  // Read data
   bit               o_pslverr;  // Slave error
   bit               o_pready;  // Ready
 
@@ -18,9 +22,9 @@ class apb_seq_item extends uvm_sequence_item;
     `uvm_field_int(i_penable, UVM_ALL_ON)
     `uvm_field_int(i_pwdata, UVM_ALL_ON)
     `uvm_field_int(i_pstrb, UVM_ALL_ON)
-    `uvm_field_int(i_prdata, UVM_ALL_ON)
-    `uvm_field_int(i_pslverr, UVM_ALL_ON)
-    `uvm_field_int(i_pready, UVM_ALL_ON)
+    `uvm_field_int(o_prdata, UVM_ALL_ON)
+    `uvm_field_int(o_pslverr, UVM_ALL_ON)
+    `uvm_field_int(o_pready, UVM_ALL_ON)
   `uvm_object_utils_end
 
   //--------class constructor-------------
@@ -37,4 +41,4 @@ class apb_seq_item extends uvm_sequence_item;
   constraint enable {i_penable inside {0,1};}
   constraint wdata {i_pwdata inside {[0:500]};}
 
-endclass: apb_seq_item
+  endclass
