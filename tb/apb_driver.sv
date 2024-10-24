@@ -1,3 +1,5 @@
+`include "apb_sequencer.sv"
+
 `define DRV_if vif.DRV.drv_cb
 class apb_driver extends uvm_driver#(apb_seq_item);
   
@@ -50,7 +52,7 @@ class apb_driver extends uvm_driver#(apb_seq_item);
       @(posedge vif.pclk);
       `DRV_if.i_penable <= 'b0;
       `DRV_if.i_psel <= 'b0;
-      `uvm_info(get_type_name(),$sformatf("\nDriving APB transaction: psel=%0d, pwrite=%0d, penable=%0d, paddr=%0h, pwdata=%0h",vif.DRV.drv_cb.i_psel, vif.DRV.drv_cb.i_pwrite, vif.DRV.drv_cb.i_penable,vif.DRV.drv_cb.i_paddr, vif.DRV.drv_cb.i_pwdata),UVM_LOW);
+      `uvm_info(get_type_name(),$sformatf("\nDriving APB transaction:\n psel=%0d, pwrite=%0d, penable=%0d, paddr=%0h, pwdata=%0h",vif.DRV.drv_cb.i_psel, vif.DRV.drv_cb.i_pwrite, vif.DRV.drv_cb.i_penable,vif.DRV.drv_cb.i_paddr, vif.DRV.drv_cb.i_pwdata),UVM_LOW);
     end
   endtask
 

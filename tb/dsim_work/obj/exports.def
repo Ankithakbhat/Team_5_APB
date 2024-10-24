@@ -5,7 +5,6 @@ EXPORTS
     VHDLPrecision
     CompMinTypMax
     ZeroDelayEnabledFlags
-    m__uvm_report_dpi
     LR.LogToPhy
     LR.PhysNames
     LBstd.C0bject.VTable.Uod
