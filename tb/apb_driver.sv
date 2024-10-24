@@ -15,8 +15,8 @@ class apb_driver extends uvm_driver#(apb_seq_item);
 //------get interface handel from top -------------------//
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if(!(uvm_config_db #(virtual alu_inf)::get(this, "*", "vif", vif)))
-    `uvm_fatal("driver","unable to get interface");
+    if(!(uvm_config_db #(virtual apb_intrf)::get(this, "*", "vif", vif)))
+    `uvm_fatal("driver","unable to get interface")
   endfunction
 
   task run_phase(uvm_phase phase);
@@ -30,40 +30,29 @@ class apb_driver extends uvm_driver#(apb_seq_item);
 
   task drive();
     if(vif.presetn == 0) begin
-      @(posedge pclk);
+      @(posedge vif.pclk);
       `DRV_if.i_paddr <= 'bz;
       `DRV_if.i_pwrite <= 'bz;
       `DRV_if.i_psel <= 'bz;
       `DRV_if.i_penable <= 'bz;
       `DRV_if.i_pwdata <= 'bz;
       `DRV_if.i_pstrb <= 'bz;
+      `uvm_info("driver","Reset condition",UVM_LOW)
     end
     else begin
-      @(posedge pclk);
-      if(req.i_pwrite == 1) begin
-        write();
-      end
-      else begin
-        read();
-      end
+      @(posedge vif.pclk);
+      `DRV_if.i_psel <= 'b1;
+      `DRV_if.i_pwrite <= req.i_pwrite;
+      `DRV_if.i_paddr <= req.i_paddr;
+      `DRV_if.i_pwdata <= req.i_pwdata;
+      @(posedge vif.pclk);
+      `DRV_if.i_penable <= 'b1;
+      @(posedge vif.pclk);
+      `DRV_if.i_penable <= 'b0;
+      `DRV_if.i_psel <= 'b0;
+      `uvm_info(get_type_name(),$sformatf("\nDriving APB transaction: psel=%0d, pwrite=%0d, penable=%0d, paddr=%0h, pwdata=%0h",vif.DRV.drv_cb.i_psel, vif.DRV.drv_cb.i_pwrite, vif.DRV.drv_cb.i_penable,vif.DRV.drv_cb.i_paddr, vif.DRV.drv_cb.i_pwdata),UVM_LOW);
     end
   endtask
-
-  //-----write operation-------
-
-  task write();
-    @(posedge pclk);
-    `DRV_if.i_psel <= 1;
-    `DRV_if.i_paddr <= req.i_paddr;
-    `DRV_if.i_pwdata <= req.i_pwdata;
-    @(posedge pclk);
-    `DRV_if.i_penable <= 1;
-    @(posedge pclk);
-
-    `DRV_if.i_penable <= 1;
-    `DRV_if.i_psel <= 1;
-
-
 
 endclass: apb_driver
 
