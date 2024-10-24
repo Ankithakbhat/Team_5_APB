@@ -33,10 +33,10 @@ class apb_driver extends uvm_driver#(apb_seq_item);
       @(posedge vif.pclk);
       `DRV_if.i_paddr <= 'bz;
       `DRV_if.i_pwrite <= 'bz;
-      `DRV_if.i_psel <= 'bz;
-      `DRV_if.i_penable <= 'bz;
-      `DRV_if.i_pwdata <= 'bz;
-      `DRV_if.i_pstrb <= 'bz;
+      `DRV_if.i_psel <= 'b0;
+      `DRV_if.i_penable <= 'b0;
+      `DRV_if.i_pwdata <= 'b0;
+      `DRV_if.i_pstrb <= 'b0;
       `uvm_info("driver","Reset condition",UVM_LOW)
     end
     else begin
