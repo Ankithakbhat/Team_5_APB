@@ -1,4 +1,4 @@
-`include "apb_sequencer.sv"
+//`include "apb_sequencer.sv"
 
 `define DRV_if vif.DRV.drv_cb
 class apb_driver extends uvm_driver#(apb_seq_item);
