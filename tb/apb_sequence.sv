@@ -171,11 +171,11 @@ class apb_alternate_read_write extends apb_sequence;
 	apb_write_read read;
 	
 	virtual task body();
-	repeat(`num_txn)
+	repeat(5)
 		begin
 		`uvm_do_with(req,{i_pwrite==1;i_pwdata==`DW'hAAAA_AAAA;i_paddr=={`AW'h0,`AW'h8};})
 		end
-	repeat(`num_txn)
+	repeat(5)
 		begin
 		`uvm_do(read)
 		end
