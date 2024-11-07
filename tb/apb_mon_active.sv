@@ -1,6 +1,6 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-
+`include "apb_sequence_item.sv"
 class apb_active_monitor extends uvm_monitor;
    `uvm_component_utils(apb_active_monitor)
 
@@ -35,15 +35,15 @@ class apb_active_monitor extends uvm_monitor;
             trans = apb_seq_item::type_id::create("trans");
 
             // Capture **APB input signals** provided to the APB Slave
-            trans.paddr    = vif.i_paddr;    // Address
-            trans.pwrite   = vif.i_pwrite;   // Write enable
-            trans.psel     = vif.i_psel;       // Select signal
-            trans.penable  = vif.i_penable;    // Enable signal
-            trans.pwdata   = vif.i_pwdata;   // Write data
-            trans.pstrb    = vif.i_pstrb;    // Write strobe
+            trans.i_paddr    = vif.i_paddr;    // Address
+            trans.i_pwrite   = vif.i_pwrite;   // Write enable
+            trans.i_psel     = vif.i_psel;       // Select signal
+            trans.i_penable  = vif.i_penable;    // Enable signal
+            trans.i_pwdata   = vif.i_pwdata;   // Write data
+            trans.i_pstrb    = vif.i_pstrb;    // Write strobe
 
             // Capture **hardware interface input signal**
-            trans.hw_sts   = vif.i_hw_sts;   // Status signal from HW to APB registers
+          //  trans.i_hw_sts   = vif.i_hw_sts;   // Status signal from HW to APB registers
 
             // Write the transaction to the analysis port
             item_collected_port.write(trans);

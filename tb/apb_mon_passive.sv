@@ -1,6 +1,6 @@
 `include "uvm_macros.svh"
 import uvm_pkg::*;
-
+`include "apb_sequence_item.sv"
 class apb_passive_monitor extends uvm_monitor;
    `uvm_component_utils(apb_passive_monitor)
 
@@ -35,12 +35,12 @@ class apb_passive_monitor extends uvm_monitor;
             trans = apb_seq_item::type_id::create("trans");
 
             // Capture **APB output signals** from the APB Slave
-            trans.prdata   = vif.o_prdata;   // Capturing read data
-            trans.pslverr  = vif.o_pslverr;  // Capturing slave error
-            trans.pready   = vif.o_pready;   // Capturing ready signal
+            trans.o_prdata   = vif.o_prdata;   // Capturing read data
+            trans.o_pslverr  = vif.o_pslverr;  // Capturing slave error
+            trans.o_pready   = vif.o_pready;   // Capturing ready signal
 
             // Capture **hardware interface signal**
-            trans.hw_ctl   = vif.o_hw_ctl;   // Capturing hardware control signal from APB registers
+           // trans.o_hw_ctl   = vif.o_hw_ctl;   // Capturing hardware control signal from APB registers
 
             // Write the transaction to the analysis port
             item_collected_port.write(trans);
