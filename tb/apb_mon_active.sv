@@ -5,7 +5,7 @@ class apb_active_monitor extends uvm_monitor;
    `uvm_component_utils(apb_active_monitor)
 
    // Variables
-   virtual apb_if vif;  // Virtual interface for active monitoring
+   virtual apb_intrf vif;  // Virtual interface for active monitoring
 
    uvm_analysis_port#(apb_seq_item) item_collected_port;  // Analysis port to pass collected items
    apb_seq_item trans;  // Transaction item for APB signals
@@ -19,7 +19,7 @@ class apb_active_monitor extends uvm_monitor;
    function void build_phase(uvm_phase phase);
       super.build_phase(phase);
       item_collected_port = new("item_collected_port", this);
-      if (!uvm_config_db#(virtual apb_if)::get(this, "*", "vif", vif))
+      if (!uvm_config_db#(virtual apb_intrf)::get(this, "*", "vif", vif))
          `uvm_fatal(get_name(), "Cannot get virtual interface");
    endfunction
 
